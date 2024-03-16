@@ -1,0 +1,35 @@
+int readUV;
+float UVIndex;
+
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(9600);
+
+  pinMode(A0, INPUT);
+
+}
+
+void loop() {
+
+  readUV = analogRead(A0);
+  readUV = 40;
+
+  if (readUV <= 10) {
+    UVIndex = 0;
+  }
+  else if (readUV <= 25.782) {
+    UVIndex = (0.02778*readUV - 0.2778);
+
+    UVIndex = round(UVIndex);
+
+  }
+  else {
+    UVIndex = (0.05147*readUV - 1.327);
+
+    UVIndex = round(UVIndex);
+
+  }
+
+  //Serial.println((int)UVIndex);
+  Serial.println(UVIndex);
+}
